@@ -8,19 +8,19 @@ namespace ChineseNumberConvert.Handlers
 
         protected ChineseNumberConvertExpression()
         {
-            NumberTable.Add("一", 1);
-            NumberTable.Add("二", 2);
-            NumberTable.Add("三", 3);
-            NumberTable.Add("四", 4);
-            NumberTable.Add("五", 5);
-            NumberTable.Add("六", 6);
-            NumberTable.Add("七", 7);
-            NumberTable.Add("八", 8);
-            NumberTable.Add("九", 9);
-            NumberTable.Add("十", 10);
-            NumberTable.Add("百", 100);
-            NumberTable.Add("千", 1000);
-            NumberTable.Add("万", 10000);
+            NumberTable.Add(ChineseNumberChar.One, 1);
+            NumberTable.Add(ChineseNumberChar.Two, 2);
+            NumberTable.Add(ChineseNumberChar.Three, 3);
+            NumberTable.Add(ChineseNumberChar.Four, 4);
+            NumberTable.Add(ChineseNumberChar.Five, 5);
+            NumberTable.Add(ChineseNumberChar.Six, 6);
+            NumberTable.Add(ChineseNumberChar.Seven, 7);
+            NumberTable.Add(ChineseNumberChar.Eight, 8);
+            NumberTable.Add(ChineseNumberChar.Nine, 9);
+            NumberTable.Add(ChineseNumberChar.Ten, 10);
+            NumberTable.Add(ChineseNumberChar.Hundred, 100);
+            NumberTable.Add(ChineseNumberChar.Thousand, 1000);
+            NumberTable.Add(ChineseNumberChar.Wan, 10000);
         }
 
         public virtual void Interpret(ChineseNumberConvertContext context)
@@ -32,7 +32,7 @@ namespace ChineseNumberConvert.Handlers
 
             foreach (string key in NumberTable.Keys)
             {
-                if (string.Equals(key, "十", System.StringComparison.Ordinal))
+                if (string.Equals(key, ChineseNumberChar.Ten, System.StringComparison.Ordinal))
                 {
                     break;
                 }
@@ -43,7 +43,7 @@ namespace ChineseNumberConvert.Handlers
                     context.Data += value * this.Multiplier();
                     context.Statement = context.Statement.Substring(0, context.Statement.Length - GetLength());
                 }
-                if (context.Statement.EndsWith("零", System.StringComparison.Ordinal))
+                if (context.Statement.EndsWith(ChineseNumberChar.Zero, System.StringComparison.Ordinal))
                 {
                     context.Statement = context.Statement.Substring(0, context.Statement.Length - 1);
                 }

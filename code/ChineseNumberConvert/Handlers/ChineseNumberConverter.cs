@@ -34,14 +34,14 @@ namespace ChineseNumberConvert.Handlers
         private string PrePrecess(string str)
         {
             str = str.Trim();
-            if (str.StartsWith(ShiExpression.Postfix, System.StringComparison.Ordinal)||
-                str.StartsWith(BaiExpression.Postfix, System.StringComparison.Ordinal) ||
-                str.StartsWith(QianExpression.Postfix, System.StringComparison.Ordinal) ||
-                str.StartsWith(WanExpression.Postfix, System.StringComparison.Ordinal) ||
-                str.StartsWith(YiExpression.Postfix, System.StringComparison.Ordinal))
+            if (str.StartsWith(ChineseNumberChar.Ten, System.StringComparison.Ordinal) ||
+                str.StartsWith(ChineseNumberChar.Hundred, System.StringComparison.Ordinal) ||
+                str.StartsWith(ChineseNumberChar.Thousand, System.StringComparison.Ordinal) ||
+                str.StartsWith(ChineseNumberChar.Wan, System.StringComparison.Ordinal) ||
+                str.StartsWith(ChineseNumberChar.Yi, System.StringComparison.Ordinal))
             {
                 // 在单位前面补充 “一”
-                str = "一" + str;
+                str = ChineseNumberChar.One + str;
             }
             return str;
         }

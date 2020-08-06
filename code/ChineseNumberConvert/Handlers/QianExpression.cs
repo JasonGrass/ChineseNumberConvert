@@ -5,11 +5,9 @@
     /// </summary>
     public class QianExpression : ChineseNumberConvertExpression
     {
-        public const string Postfix = "千";
-
         public override string GetPostfix()
         {
-            return Postfix;
+            return ChineseNumberChar.Thousand;
         }
 
         public override long Multiplier()
