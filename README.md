@@ -20,3 +20,14 @@ example: 三千六百亿四千七百二十万零二百二十二 -> 3600 4720 022
 | 一十   | 合法     |
 | 十     | 不合法   |
 | 十一   | 不合法   |
+
+## 使用示例
+
+``` csharp
+
+string str = "三千六百亿四千七百二十万零二百二十二";
+
+var converter = new ChineseNumberConverter();
+long number = converter.Convert(str);
+
+```
