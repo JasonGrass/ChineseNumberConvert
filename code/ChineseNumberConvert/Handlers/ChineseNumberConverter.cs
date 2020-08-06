@@ -6,12 +6,7 @@ namespace ChineseNumberConvert.Handlers
     {
         public long Convert(string str)
         {
-            str = str.Trim();
-            if (str.StartsWith("十", System.StringComparison.Ordinal))
-            {
-                // 在 “十” 前面补充 “一”
-                str = "一" + str;
-            }
+            str = PrePrecess(str);
 
             ChineseNumberConvertContext context = new ChineseNumberConvertContext(str);
 
@@ -29,6 +24,26 @@ namespace ChineseNumberConvert.Handlers
             }
 
             return context.Data;
+        }
+
+        /// <summary>
+        /// 预处理
+        /// </summary>
+        /// <param name="str"></param>
+        /// <returns></returns>
+        private string PrePrecess(string str)
+        {
+            str = str.Trim();
+            if (str.StartsWith(ShiExpression.Postfix, System.StringComparison.Ordinal)||
+                str.StartsWith(BaiExpression.Postfix, System.StringComparison.Ordinal) ||
+                str.StartsWith(QianExpression.Postfix, System.StringComparison.Ordinal) ||
+                str.StartsWith(WanExpression.Postfix, System.StringComparison.Ordinal) ||
+                str.StartsWith(YiExpression.Postfix, System.StringComparison.Ordinal))
+            {
+                // 在单位前面补充 “一”
+                str = "一" + str;
+            }
+            return str;
         }
 
     }

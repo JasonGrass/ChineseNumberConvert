@@ -5,9 +5,11 @@
     /// </summary>
     public class BaiExpression : ChineseNumberConvertExpression
     {
+        public const string Postfix = "百";
+
         public override string GetPostfix()
         {
-            return "百";
+            return Postfix;
         }
 
         public override long Multiplier()

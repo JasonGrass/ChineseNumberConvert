@@ -5,9 +5,11 @@
     /// </summary>
     public class QianExpression : ChineseNumberConvertExpression
     {
+        public const string Postfix = "千";
+
         public override string GetPostfix()
         {
-            return "千";
+            return Postfix;
         }
 
         public override long Multiplier()

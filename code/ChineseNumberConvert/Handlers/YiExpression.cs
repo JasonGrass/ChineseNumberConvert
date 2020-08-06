@@ -9,6 +9,8 @@ namespace ChineseNumberConvert.Handlers
     /// </summary>
     public class YiExpression : ChineseNumberConvertExpression
     {
+        public const string Postfix = "亿";
+
         private IList<ChineseNumberConvertExpression> SubExpressionTree { get; }
 
         public YiExpression()
@@ -53,7 +55,7 @@ namespace ChineseNumberConvert.Handlers
 
         public override string GetPostfix()
         {
-            return "亿";
+            return Postfix;
         }
 
         public override long Multiplier()

@@ -8,6 +8,9 @@ namespace ChineseNumberConvert.Handlers
     /// </summary>
     public class WanExpression : ChineseNumberConvertExpression
     {
+        public const string Postfix = "万";
+
+
         private IList<ChineseNumberConvertExpression> SubExpressionTree { get; }
 
         public WanExpression()
@@ -50,7 +53,7 @@ namespace ChineseNumberConvert.Handlers
 
         public override string GetPostfix()
         {
-            return "万";
+            return Postfix;
         }
 
         public override long Multiplier()
